@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:Monitor.Desktop"
+        x:Class="Monitor.Desktop.StatusWindow"
+        Title="Monitor"
+        Width="460" Height="360"
+        WindowStartupLocation="CenterScreen">
+  <DockPanel Margin="12">
+    <TextBlock x:Name="Footer" DockPanel.Dock="Bottom" Margin="0,8,0,0"
+               FontSize="12" Opacity="0.7" TextWrapping="Wrap" />
+    <ListBox x:Name="Pipelines" DoubleTapped="OnPipelineDoubleTapped">
+      <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="local:PipelineRow">
+          <Grid ColumnDefinitions="Auto,*" Margin="0,2">
+            <Ellipse Grid.Column="0" Width="12" Height="12" Margin="0,0,10,0"
+                     VerticalAlignment="Center" Fill="{Binding Dot}"
+                     Stroke="{Binding Ring}" StrokeThickness="2" />
+            <StackPanel Grid.Column="1">
+              <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+              <TextBlock Text="{Binding Detail}" FontSize="12" Opacity="0.7" />
+            </StackPanel>
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </DockPanel>
+</Window>
